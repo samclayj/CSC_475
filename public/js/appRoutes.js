@@ -5,7 +5,7 @@
 
         // home page
         .when('/', {
-            templateUrl: 'views/home.html',
+            templateUrl: 'views/main.html',
             controller: 'MainController'
         })
 
@@ -13,7 +13,18 @@
         .when('/nerds', {
             templateUrl: 'views/nerd.html',
             controller: 'NerdController'
-        });
+        })
+
+        .when('/Projects', {
+            templateUrl: 'views/projects.html',
+            controller: 'ProjectController'
+        })
+
+        .when('/Experience', {
+            templateUrl: 'views/experience.html',
+            controller: 'ExperienceController'
+        })
+        ;
 
     $locationProvider.html5Mode(true);
 
