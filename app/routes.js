@@ -14,7 +14,7 @@ var Nerd = require('./models/nerd');
             // use mongoose to get all nerds in the database
             Nerd.find(function(err, nerds) {
 
-                // if there is an error retrieving, send the error. 
+                // if there is an error retrieving, send the error.
                                 // nothing after res.send(err) will execute
                 if (err)
                     res.send(err);

@@ -1,8 +1,24 @@
-// public/js/app.js
-var app = angular.module('sampleApp', ['ngRoute', 'appRoutes', 'MainCtrl', 'ProjectCtrl', 'ExperienceCtrl']);
+// // public/js/app.js
+// var app = angular.module('sampleApp', ['ui.router', 'MainCtrl', 'ProjectCtrl', 'ExperienceCtrl', 'HomeCtrl']);
+//
+// //var mongoose = require('mongoose');
+// //require('./models/Posts');
+// //require('./models/Comments');
+//
+// //mongoose.connect('mongodb://localhost/news');
 
-var mongoose = require('mongoose');
-require('./models/Posts');
-require('./models/Comments');
+var routerApp = angular.module('portfolioApp', ['ui.router', 'MainCtrl']);
 
-mongoose.connect('mongodb://localhost/news');
+routerApp.config(function($stateProvider, $urlRouterProvider) {
+
+    $urlRouterProvider.otherwise('/home');
+
+    $stateProvider
+        // HOME STATES AND NESTED VIEWS ========================================
+        .state('home', {
+            url: '/home',
+            templateUrl: '../views/main.html',
+            controller: 'MainController'
+        });
+
+});
