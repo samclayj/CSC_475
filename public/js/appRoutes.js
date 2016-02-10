@@ -1,4 +1,9 @@
 // public/js/appRoutes.js
+
+var mongoose = require('mongoose');
+var Post = mongoose.model('Post');
+var Comment = mongoose.model('Comment');
+
     angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 
     $routeProvider
@@ -7,12 +12,6 @@
         .when('/', {
             templateUrl: 'views/main.html',
             controller: 'MainController'
-        })
-
-        // nerds page that will use the NerdController
-        .when('/nerds', {
-            templateUrl: 'views/nerd.html',
-            controller: 'NerdController'
         })
 
         .when('/Projects', {

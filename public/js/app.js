@@ -1,2 +1,8 @@
 // public/js/app.js
-angular.module('sampleApp', ['ngRoute', 'appRoutes', 'MainCtrl', 'NerdCtrl', 'NerdService']);
+var app = angular.module('sampleApp', ['ngRoute', 'appRoutes', 'MainCtrl', 'ProjectCtrl', 'ExperienceCtrl']);
+
+var mongoose = require('mongoose');
+require('./models/Posts');
+require('./models/Comments');
+
+mongoose.connect('mongodb://localhost/news');
