@@ -9,6 +9,7 @@ var methodOverride = require('method-override');
 //Added this
 var mongoose = require('mongoose');
 
+//Include models for database here.
 require('./app/models/Posts');
 require('./app/models/Comments');
 
