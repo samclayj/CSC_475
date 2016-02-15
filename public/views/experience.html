@@ -6,6 +6,9 @@
           <div class="col-md-8">
               <h1 class="text-info">Experience</h1>
               <p class="lead">A timeline and description of my experience in school and work.</p>
+            <h1>
+              {{tagline}}
+            </h1>
           </div>
           <div class="col-md-4 offset">
               <i class="fa fa-book fa-5x"></i>
@@ -14,13 +17,15 @@
     </div>
 </header>
 
-<div data-ng-controller="ExpCtrl" data-ng-init="init()"></div>
+  <div ng-repeat="post in posts">
+    {{post.title}} - upvotes: {{post.upvotes}}
+  </div>
 
 <div class="section section-light-blue">
     <div class="container">
         <div class="row">
             <div class="col-md-10">
-              <h3>Timeline and Resum&eacute</h3>
+              <h3>Timeline and Resume</h3>
                 <p>Add timeline of experience and resume here.</p>
             </br>
                 <p>To-do</p>

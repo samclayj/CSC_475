@@ -1,13 +1,4 @@
-// // public/js/app.js
-// var app = angular.module('sampleApp', ['ui.router', 'MainCtrl', 'ProjectCtrl', 'ExperienceCtrl', 'HomeCtrl']);
-//
-// //var mongoose = require('mongoose');
-// //require('./models/Posts');
-// //require('./models/Comments');
-//
-// //mongoose.connect('mongodb://localhost/news');
-
-var routerApp = angular.module('portfolioApp', ['ui.router', 'MainCtrl']);
+var routerApp = angular.module('portfolioApp', ['ui.router', 'MainCtrl', 'ProjectCtrl', 'ExpCtrl']);
 
 routerApp.config(function($stateProvider, $urlRouterProvider) {
 
@@ -19,6 +10,18 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
             url: '/home',
             templateUrl: '../views/main.html',
             controller: 'MainController'
-        });
+        })
+
+        .state('projects', {
+            url: '/projects',
+            templateUrl: '../views/projects.html',
+            controller: 'ProjectController'
+        })
+  
+        .state('experience', {
+              url: '/experience',
+              templateUrl: '../views/experience.html',
+              controller: 'ExpController'
+          });
 
 });
