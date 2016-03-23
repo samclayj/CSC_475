@@ -1,62 +1,42 @@
-<!-- public/index.html -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-
-    <title>Starter Node and Angular</title>
-
-    <!-- CSS -->
+<html>
+  <head>
+    <title>CSC 475 Accreditation System</title>
+    
     <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-
-    <!-- JS -->
+    
     <script src="libs/angular/angular.min.js"></script>
-    <!--<script src="libs/angular-route/angular-route.min.js"></script>-->
-
+    <script src="libs/angular-ui-router/release/angular-ui-router.js"></script>
+    
     <!-- ANGULAR CUSTOM -->
     <script src="../js/app.js"></script>
     <script src="js/controllers/MainCtrl.js"></script>
-    <script src="js/controllers/ExpCtrl.js"></script>
-    <script src="js/controllers/ProjectCtrl.js"></script>
+    <script src="js/controllers/NavCtrl.js"></script>
 
 
-    <script src="libs/angular-ui-router/release/angular-ui-router.js"></script>
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="./assets/CSS/main.css">
-    <link rel="stylesheet" href="./assets/CSS/projects.css">
-
-
-    <link rel="stylesheet" href="./assets/CSS/x_paper_kit_1.0/assets/css/ct-paper.css" />
-    <link href="./assets/CSS/rotating-card.css" rel="stylesheet" />
-    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
-</head>
-
-<div ng-include="'./components/navbar/navbar.html'"></div>
-
-<body ng-app="portfolioApp">
-
-    <!-- ANGULAR DYNAMIC CONTENT -->
-    <div ui-view></div>
+    <script src="js/controllers/PostsCtrl.js"></script>
+    <script src="js/services/PostService.js"></script>
+    
+    <script src="js/controllers/AuthCtrl.js"></script>
+    <script src="js/services/AuthService.js"></script>
 
 
-    <script src="./x_paper_kit_1.0/assets/js/jquery-1.10.2.js" type="text/javascript"></script>
-      <script src="./x_paper_kit_1.0/assets/js/jquery-ui-1.10.4.custom.min.js" type="text/javascript"></script>
-
-      <script src="./x_paper_kit_1.0/bootstrap3/js/bootstrap.js" type="text/javascript"></script>
-
-      <!--  Plugins -->
-      <script src="./assets/CSS/x_paper_kit_1.0/assets/js/jquery.sharrre.js"></script>
-      <script src="./assets/CSS/x_paper_kit_1.0/assets/js/ct-paper-checkbox.js"></script>
-      <script src="./assets/CSS/x_paper_kit_1.0/assets/js/ct-paper-radio.js"></script>
-      <script src="./assets/CSS/x_paper_kit_1.0/assets/js/bootstrap-select.js"></script>
-      <script src="./assets/CSS/x_paper_kit_1.0/assets/js/bootstrap-datepicker.js"></script>
-
-      <script src="./assets/CSS/x_paper_kit_1.0/assets/js/ct-paper.js"></script>
-
-</body>
-
-<div ng-include="'./components/footer/footer.html'"></div>
-
+  </head>
+  <body ng-app="creditSystem">
+    <nav class="navbar navbar-default pull-right" ng-controller="NavController">
+      <ul class="nav navbar-nav">
+        <li ng-show="isLoggedIn()"><a>{{ currentUser() }}</a></li>
+        <li><a href="/#/home">Home</a></li>
+        <li ng-show="isLoggedIn()"><a href="" ng-click="logOut()">Log Out</a></li>
+        <li ng-hide="isLoggedIn()"><a href="/#/login">Log In</a></li>
+        <li ng-hide="isLoggedIn()"><a href="/#/register">Register</a></li>
+      </ul>
+    </nav>
+    
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+              <div ui-view></div>
+      </div>
+    </div>
+  </body>
 </html>

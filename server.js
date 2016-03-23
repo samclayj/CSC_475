@@ -8,14 +8,16 @@ var methodOverride = require('method-override');
 
 //Added this
 var mongoose = require('mongoose');
+var passport = require('passport');
 
 //Include models for database here.
 require('./app/models/Posts');
 require('./app/models/Comments');
-
+require('./app/models/User');
 // configuration ===========================================
 
 // config files
+require('./config/passport');
 var db = require('./config/db');
 
 // set our port
@@ -23,6 +25,7 @@ var port = process.env.PORT || 3000;
 
 var router = express.Router();// get an instance of the express Router
 // connect to our mongoDB database
+
 // (uncomment after you enter in your own credentials in config/db.js)
 mongoose.connect(db.url);
 
@@ -41,6 +44,10 @@ app.use(methodOverride('X-HTTP-Method-Override'));
 
 // set the static files location /public/img will be /img for users
 app.use(express.static(__dirname + '/public'));
+
+
+// Passport ================================================
+app.use(passport.initialize());
 
 // routes ==================================================
 require('./routes/index')(router); // configure our routes
