@@ -12,6 +12,9 @@ var jwt = require('jsonwebtoken');
 
 //The hash field holds the hashed password for the user.
 var UserSchema = new mongoose.Schema({
+  firstName: String,
+  lastName: String,
+  accountType: {type:String, default: "Accreditor"},
   username: {type: String, lowercase: true, unique: true},
   hash: String,
   salt: String
@@ -29,9 +32,7 @@ UserSchema.methods.setPassword = function(password) {
 
 UserSchema.methods.validPassword = function(password) {
   var hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64).toString('hex');
-  
-  console.log("Password is valid: " + (this.hash == hash));
-  
+    
   return this.hash === hash;
 };
 
@@ -49,6 +50,7 @@ UserSchema.methods.generateJWT = function() {
   return jwt.sign({
     _id: this._id,
     username: this.username,
+    accountType: this.accountType,
     exp: parseInt(exp.getTime() / 1000),
   }, 'SECRET_TUNNEL');
 };

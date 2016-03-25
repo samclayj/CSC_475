@@ -14,6 +14,7 @@ var passport = require('passport');
 require('./app/models/Posts');
 require('./app/models/Comments');
 require('./app/models/User');
+
 // configuration ===========================================
 
 // config files
@@ -51,6 +52,9 @@ app.use(passport.initialize());
 
 // routes ==================================================
 require('./routes/index')(router); // configure our routes
+require('./routes/userRoutes')(router); // configure our routes
+
+
 
 app.use('/api', router);
 

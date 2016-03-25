@@ -1,27 +1,66 @@
-<div class="page-header">
-  <h1>
-    Credit System - Register
-  </h1>
+<div class="container">
+  <div class="page-header">
+    <h2>
+     Register a New User
+    </h2>
+  </div>
+
+  <div ng-show="error" class="alert alert-danger row">
+    <span>{{ error.message }}</span>
+  </div>
+
+  <form name="userForm" ng-submit="register()" method="post" class="form-horizontal" style="margin-top:30px;">
+    <div class="form-group">
+        <label class="col-xs-3 control-label">First Name</label>
+        <div class="col-xs-5">
+            <input type="text" class="form-control" name="fname" ng-model="user.firstName" required />
+            <span class="error" ng-show="userForm.fname.$touched && userForm.fname.$invalid">*Please enter your first name.</span>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="col-xs-3 control-label">Last Name</label>
+        <div class="col-xs-5">
+            <input type="text" class="form-control" name="lname" ng-model="user.lastName" required />
+            <span class="error" ng-show="userForm.lname.$touched && userForm.lname.$invalid">*Please enter your last name.</span>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="col-xs-3 control-label">Username</label>
+        <div class="col-xs-5">
+            <input type="text" class="form-control" name="username" ng-model="user.username" required />
+            <span class="error" ng-show="userForm.username.$touched && userForm.username.$invalid">*Please enter your username.</span>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="col-xs-3 control-label">Password</label>
+        <div class="col-xs-5">
+            <input type="password" class="form-control" name="password" ng-model="user.password" required />
+            <span class="error" ng-show="userForm.password.$touched && userForm.password.$invalid">*Please enter your password.</span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-xs-3 control-label">Account Type</label>
+        <div class="col-xs-5 selectContainer">
+            <select class="form-control" name="accountType" ng-model="user.accountType">
+                <option value="">Select Account Type</option>
+                <option value="Accreditor">Accreditor</option>
+                <option value="Faculty">Faculty</option>
+                <option value="Administration">Administration</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-xs-5 col-xs-offset-3">
+            <button type="submit" class="btn btn-primary">Register</button>
+        </div>
+    </div>
+  </form>
+
 </div>
 
-<div ng-show="error" class="alert alert-danger row">
-  <span>{{ error.message }}</span>
-</div>
 
-<form ng-submit="register()" style="margin-top:30px;">
-  <h3>
-    Register
-  </h3>
-  
-  <div class="form-group">
-    <input type="text" class="form-control" placeholder="Username"
-           ng-model="user.username"></input>
-  </div>
-  <div class="form-group">
-    <input type="password" class="form-control" placeholder="Password"
-           ng-model="user.password"></input>
-  </div>
-  <button type="submit" class="btn btn-primary">
-    Register  
-  </button>
-</form>

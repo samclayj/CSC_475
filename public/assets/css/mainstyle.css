@@ -1,0 +1,32 @@
+.jumbotron {
+    margin-top:0px;
+    color: white;
+    background-color: #5C4283;
+}
+
+.sfa-logo {
+    width: 200px;
+    float: right;
+}
+
+.sfa-nav {
+    background-color: white;
+    color: #5C4283;
+}
+
+.navbar-static-top {
+  margin-bottom:0px;
+}
+
+.error {
+    color: red;
+}
+
+.footer-div {
+  margin-top:50px;
+}
+
+.footer {
+  height:75px;
+  margin-top:50px;
+}

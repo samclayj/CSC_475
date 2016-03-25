@@ -1,4 +1,4 @@
-var creditSystem = angular.module('creditSystem', ['ui.router', 'MainCtrl', 'PostsCtrl', 'PostService', 'AuthCtrl', 'AuthService', 'NavCtrl']);
+var creditSystem = angular.module('creditSystem', ['ui.router', 'MainCtrl', 'PostsCtrl', 'PostService', 'AuthCtrl', 'AuthService', 'NavCtrl', 'UserService', 'UserCtrl']);
 
 creditSystem.config(function($stateProvider, $urlRouterProvider) {
 
@@ -58,6 +58,17 @@ creditSystem.config(function($stateProvider, $urlRouterProvider) {
                 $state.go('home');
               }
             }]
+        })
+    
+         .state('manageUsers', {
+          url: '/manageUsers',
+          templateUrl: '../views/manageUsers.html',
+          controller: 'UserController',
+          resolve: {
+              postPromise: ['userService', function(userService) {
+                return userService.getAll();
+              }]
+           }
         });
 
 });

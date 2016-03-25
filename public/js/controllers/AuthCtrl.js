@@ -10,6 +10,7 @@ function($scope, $state, auth) {
   $scope.user = {};
   
   $scope.register = function() {
+    alert("Registering: " + $scope.user.firstName + " " + $scope.user.lastName);
     auth.register($scope.user).error(function(error) {
       $scope.error = error;
     }).then(function() {

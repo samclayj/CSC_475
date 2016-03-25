@@ -11,9 +11,7 @@ angular.module('PostsCtrl', []).controller('PostsController', [
     $scope.tagline = 'To the moon and back again!';
     //Get the post with the right id (provided in the URL)
     $scope.post = post;
-    
-    alert(post.author);
-    
+        
     $scope.addComment = function() {
       if($scope.body === '') {
         return;

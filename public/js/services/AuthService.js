@@ -41,10 +41,19 @@ angular.module('AuthService', []).factory('auth', ['$http', '$window', function(
     if(auth.isLoggedIn()) {
       var token = auth.getToken();
       var payload = JSON.parse($window.atob(token.split('.')[1]));
-      
+      console.log("Current User: " + payload);
       return payload.username;
     }
   };
+  
+  auth.accountType = function() {
+    if(auth.isLoggedIn()) {
+      var token = auth.getToken();
+      var payload = JSON.parse($window.atob(token.split('.')[1]));
+      console.log("Account Type: " + payload);
+      return payload.accountType;
+    }
+  }
   
   // Register, Log in, Log out======================================================
   

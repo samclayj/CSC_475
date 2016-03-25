@@ -1,0 +1,22 @@
+<div class="container">
+  <h2>Manage Users</h2>
+  <p>View and manage users here.</p>            
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Name</th>
+        <th>Account Type</th>
+        <th>Edit User</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="user in allUsers">
+        <td>{{ user.username }}</td>
+        <td>{{ user.firstName }} {{ user.lastName }}</td>
+        <td>{{ user.accountType }}</td>
+        <td><button class="btn btn-primary">Edit</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

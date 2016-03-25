@@ -141,45 +141,4 @@ module.exports = function(router){
     })
   });
   
-  // Handle User Authentication ============================
-  
-  //Register a new user (create instance of user schema)
-  router.post('/register', function(req, res, next) {
-    if(!req.body.username || !req.body.password) {
-      return res.status(400).json({message: 'Please fill out all fields.'});
-    }
-    
-    var user = new User();
-    
-    user.username = req.body.username;
-    user.setPassword(req.body.password);
-    
-    user.save(function (err) {
-      if(err) { return next(err); }
-      
-      return res.json({token: user.generateJWT()});
-    })
-  });
-  
-  //Login the user.
-  //passport.authenticate('local') uses the LocalStrategy defined in
-  // /config/passport.js. This uses a custom callback for the authenticate
-  //middleware so custom error messages can be returned to the client.
-  //Successful authentication means we should return a JWT token to the client.
-  router.post('/login', function(req, res, next) {
-    if(!req.body.username || !req.body.password){
-      return res.status(400).json({message: 'Please fill out all fields'});
-    }
-
-    passport.authenticate('local', function(err, user, info){
-      if(err){ return next(err); }
-
-      if(user){
-        return res.json({token: user.generateJWT()});
-      } else {
-        return res.status(401).json(info);
-      }
-    })(req, res, next);
-  });
-  
 }
