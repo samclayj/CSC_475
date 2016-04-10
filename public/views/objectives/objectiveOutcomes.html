@@ -1,0 +1,101 @@
+  
+<div class="container">
+  
+  <div ng-show="error" class="alert alert-danger row">
+    <span>{{ error.message }}</span>
+  </div>
+  
+  <div class="smallHeaderSection">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <h1>
+          {{ objective.name }}
+        </h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <h4>
+          {{ objective.description }}
+        </h4>
+      </div>
+    </div> 
+  </div>
+  
+  <div class="outcomeDisplaySection">
+    
+    <div ng-repeat="outcomeData in objective.outcomes">
+     <div class="col-md-8 col-md-offset-2">
+         <div class="outcomeHeader">
+          <div class="row">
+           <div class="col-md-12">
+             <h3 style="display:inline-block;">{{outcomeData.name}} - {{outcomeData.term}}</h3>
+             <button ng-show="editOutcomes" ng-click="addObjective()" class="btn btn-primary" style="display:inline-block; float:right; margin-top:15px; margin-right:10px;"><i class="fa fa-plus-square fa-lg"></i></button>
+             <button ng-show="editOutcomes" ng-click="deleteOutcome(outcomeData._id)" class="btn btn-danger" style="display:inline-block; float:right; margin-top:15px; margin-right:5px;"><i class="fa fa-trash fa-lg"></i></button>
+           </div>
+          </div>
+       </div>
+       <div class="outcomeBody">
+           <h4>
+             {{outcomeData.description}}
+           </h4>
+          <h4>
+             {{outcomeData.term}}
+           </h4>
+       </div> 
+      </div>
+    </div>
+    
+    <div ng-show="addNewOutcome">
+      <div class="col-md-12 addOutcomeFormSection">
+        <div class="col-md-10 col-md-offset-1">
+          <form name="outcomeForm" ng-submit="submitOutcomeData()" class="form-horizontal" style="margin-top:30px;" novalidate>
+            <div class="form-group">
+              <label class="col-xs-3 control-label">Outcome Name</label>
+              <div class="col-xs-9">
+                  <input type="text" class="form-control" name="name" ng-model="outcome.name" required />
+                  <span class="error" ng-show="outcomeForm.fname.$touched && outcomeForm.fname.$invalid">*Please enter the name of this objective.</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-3 control-label">Outcome Description</label>
+                <div class="col-xs-9">
+                  <textarea class="form-control" name="description" ng-model="outcome.description"></textarea>
+                    <span class="error" ng-show="outcomeForm.fname.$touched && outcomeForm.fname.$invalid">*Please enter the description of this objective.</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-xs-3 control-label">Outcome Term</label>
+              <div class="col-xs-9">
+                  <input type="text" class="form-control" name="name" ng-model="outcome.term" required />
+                  <span class="error" ng-show="outcomeForm.fname.$touched && outcomeForm.fname.$invalid">*Please enter the name of this objective.</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-xs-9 col-xs-offset-3">
+                    <button type="button" ng-click="toggleAddOutcome()" class="btn btn-primary">Cancel</button>
+                    <button style="float:right;" type="submit" class="btn btn-success">Submit Outcome</button>
+                </div>
+            </div>
+          </form>
+        </div>
+     </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-xs-8 col-xs-offset-2">
+        <div ng-hide="addNewOutcome || editOutcomes" style="float:right;" class="btn-group outcomeButtonGroup">
+          <button type="button" ng-click="backToObjectiveManage()" class="btn btn-primary">Back</button>
+          <button type="button" ng-click="toggleEditOutcomes()" class="btn btn-primary">Edit Outcomes</button>
+          <button type="button" ng-click="toggleAddOutcome()" class="btn btn-success">Add Outcome</button>
+        </div>
+        <div ng-show="!addNewOutcome && editOutcomes" style="float:right;" class="btn-group outcomeButtonGroup">
+          <button type="button" ng-click="toggleEditOutcomes()" class="btn btn-primary">Stop Editing</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

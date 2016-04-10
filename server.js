@@ -14,6 +14,8 @@ var passport = require('passport');
 require('./app/models/Posts');
 require('./app/models/Comments');
 require('./app/models/User');
+require('./app/models/Objective');
+require('./app/models/Outcome');
 
 // configuration ===========================================
 
@@ -22,7 +24,7 @@ require('./config/passport');
 var db = require('./config/db');
 
 // set our port
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 3001;
 
 var router = express.Router();// get an instance of the express Router
 // connect to our mongoDB database
@@ -53,8 +55,7 @@ app.use(passport.initialize());
 // routes ==================================================
 require('./routes/index')(router); // configure our routes
 require('./routes/userRoutes')(router); // configure our routes
-
-
+require('./routes/objectiveRoutes')(router); // configure our routes
 
 app.use('/api', router);
 

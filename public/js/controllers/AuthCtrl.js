@@ -4,16 +4,17 @@
 
 angular.module('AuthCtrl', []).controller('AuthController', [
   '$scope', 
+  '$rootScope',
   '$state',
   'auth',
-function($scope, $state, auth) {
+function($scope, $rootScope, $state, auth) {
   $scope.user = {};
   
-  $scope.register = function() {
-    alert("Registering: " + $scope.user.firstName + " " + $scope.user.lastName);
+  $scope.submitUserData = function() {
     auth.register($scope.user).error(function(error) {
       $scope.error = error;
     }).then(function() {
+      $rootScope.$emit('linkRefreshEvent', null);
       $state.go('home');
     });
   };
@@ -22,6 +23,7 @@ function($scope, $state, auth) {
     auth.logIn($scope.user).error(function(error) {
       $scope.error = error;
     }).then(function() {
+      $rootScope.$emit('linkRefreshEvent', null);
       $state.go('home');
     });
   };

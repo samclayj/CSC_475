@@ -2,6 +2,12 @@
     margin-top:0px;
     color: white;
     background-color: #5C4283;
+    border-bottom-style:solid;
+    border-bottom-color: #717174;
+    border-bottom-width:10px;
+    border-top-style:solid;
+    border-top-color: #717174;
+    border-top-width:10px;
 }
 
 .sfa-logo {
@@ -29,4 +35,61 @@
 .footer {
   height:75px;
   margin-top:50px;
+}
+
+.smallHeaderSection {
+    color: white;
+    height:150px;
+    background-color:#222222;
+    padding:25px;
+    margin-top:60px;
+    border-style:solid;
+    border-width:1px;
+    border-color:#717174;
+    border-bottom:none;
+}
+
+.outcomeDisplaySection {
+    color: black;
+    background-color: #F1F1F1;
+    height:auto;
+    padding:0px;
+    margin-bottom:60px;
+    border-style:solid;
+    border-width:1px;
+    border-color:#717174;
+    border-top:none;
+}
+
+.outcomeHeader {
+    margin-top:40px;
+    color: white;
+    height:80px;
+    background-color: #717174;
+    background-color: #5C4283;
+    padding:10px;
+    padding-left:30px;
+}
+
+.outcomeBody {
+    color: black;
+    min-height:150px;
+    height:auto;
+    padding:10px;
+    padding-left:30px;
+    background-color: #F1F1F1;
+    margin-bottom:30px;
+}
+
+.addOutcomeFormSection {
+    color: white;
+    min-height:100px;
+    height:auto;
+    padding:10px;
+    background-color:#222222;
+    margin-bottom:-1px;
+}
+
+.outcomeButtonGroup {
+  margin-bottom:30px;
 }

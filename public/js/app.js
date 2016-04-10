@@ -1,4 +1,8 @@
-var creditSystem = angular.module('creditSystem', ['ui.router', 'MainCtrl', 'PostsCtrl', 'PostService', 'AuthCtrl', 'AuthService', 'NavCtrl', 'UserService', 'UserCtrl']);
+var creditSystem = angular.module('creditSystem', ['ui.router', 'MainCtrl', 
+                                                   'PostsCtrl', 'PostService', 
+                                                   'AuthCtrl', 'AuthService', 'NavCtrl', 
+                                                   'UserService', 'UserCtrl',
+                                                   'ObjectiveService', 'ObjectiveCtrl']);
 
 creditSystem.config(function($stateProvider, $urlRouterProvider) {
 
@@ -40,9 +44,9 @@ creditSystem.config(function($stateProvider, $urlRouterProvider) {
         //before entering the state. Redirect home if they are already logged in.
         .state('login', {
             url:'/login',
-            templateUrl: '../views/login.html',
+            templateUrl: '../views/users/login.html',
             controller: 'AuthController',
-            onEnter: ['$state', 'auth', function($state, auth) {
+            onEnter: ['$state', 'auth',  function($state, auth) {
               if(auth.isLoggedIn()) {
                 $state.go('home');
               }
@@ -51,7 +55,7 @@ creditSystem.config(function($stateProvider, $urlRouterProvider) {
     
         .state('register', {
             url: '/register',
-            templateUrl: '../views/register.html',
+            templateUrl: '../views/users/registerUser.html',
             controller: 'AuthController',
             onEnter: ['$state', 'auth', function($state, auth) {
               if(auth.isLoggedIn()) {
@@ -62,13 +66,76 @@ creditSystem.config(function($stateProvider, $urlRouterProvider) {
     
          .state('manageUsers', {
           url: '/manageUsers',
-          templateUrl: '../views/manageUsers.html',
+          templateUrl: '../views/users/manageUsers.html',
           controller: 'UserController',
           resolve: {
               postPromise: ['userService', function(userService) {
                 return userService.getAll();
+              }],
+              currentUser: ['$stateParams', 'userService', function($stateParams, userService) {
+                return null;
+              }]
+           }
+        }) 
+    
+        .state('editUser', {
+          url: '/editUser/{id}',
+          templateUrl: '../views/users/editUser.html',
+          controller: 'UserController',
+          resolve: {
+              currentUser: ['$stateParams', 'userService', function($stateParams, userService) {
+                return userService.get($stateParams.id);
+              }]
+           }
+        })
+
+       .state('manageObjectives', {
+          url: '/manageObjectives',
+          templateUrl: '../views/objectives/manageObjectives.html',
+          controller: 'ObjectiveController',
+          resolve: {
+              postPromise: ['objectiveService', function(objectiveService) {
+                return objectiveService.getAll();
+              }],
+              currentObjective: ['$stateParams', 'objectiveService', function($stateParams, objectiveService) {
+                return null;
+              }]
+           }
+        })
+    
+      .state('addObjective', {
+          url: '/addObjective',
+          templateUrl: '../views/objectives/addObjective.html',
+          controller: 'ObjectiveController',
+          resolve: {
+              postPromise: ['objectiveService', function(objectiveService) {
+                return objectiveService.getAll();
+              }],
+              currentObjective: ['$stateParams', 'objectiveService', function($stateParams, objectiveService) {
+                return null;
+              }]
+           }
+        })
+    
+       .state('editObjective', {
+          url: '/editObjective/{id}',
+          templateUrl: '../views/objectives/editObjective.html',
+          controller: 'ObjectiveController',
+          resolve: {
+              currentObjective: ['$stateParams', 'objectiveService', function($stateParams, objectiveService) {
+                return objectiveService.get($stateParams.id);
+              }]
+           }
+        })
+    
+       .state('manageObjectiveOutcomes', {
+          url: '/manageObjectiveOutcomes/{id}',
+          templateUrl: '../views/objectives/objectiveOutcomes.html',
+          controller: 'ObjectiveController',
+          resolve: {
+              currentObjective: ['$stateParams', 'objectiveService', function($stateParams, objectiveService) {
+                return objectiveService.get($stateParams.id);
               }]
            }
         });
-
 });

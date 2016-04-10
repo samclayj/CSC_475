@@ -34,6 +34,54 @@ module.exports = function(router){
     });
   });
   
+  /*The Express param() function can be used to automatically load an object.
+  This for this code to be reused in any call that needs a post with a specific
+  id, which is common in most of these calls.*/
+  router.param('user', function(req, res, next, id) {
+    var query = User.findById(id);
+
+    query.exec(function (err, user){
+      if (err) { return next(err); }
+      if (!user) { return next(new Error('can\'t find user.')); }
+
+      req.user = user;
+      return next();
+    });
+  });
+  
+  router.get('/users/:user', function(req, res) {
+    res.json(req.user);
+  });
+  
+  router.post('/users/update/:user', function(req, res, next) {
+    if(!req.body.username || !req.body.firstName || !req.body.lastName) {
+      return res.status(400).json({message: 'Please fill out all fields.'});
+    }
+    
+    var user = req.user;
+    
+    user.username = req.body.username;
+    
+    if(req.body.password) {
+        user.setPassword(req.body.password);
+    }
+    
+    user.firstName = req.body.firstName;
+    user.lastName = req.body.lastName;
+    user.accountType = req.body.accountType;
+    
+    user.save(function(err, user) {
+      if(err) { return next(err); }
+      res.send(user);
+    });
+  });
+  
+  router.post('/users/delete/:user', function(req, res, next) {
+    var user = req.user;
+    var query = User.findById(user._id);
+    query.remove().exec();
+  });
+  
   // Handle User Authentication ============================
   
   //Register a new user (create instance of user schema)

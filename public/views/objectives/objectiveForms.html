@@ -1,0 +1,25 @@
+<form name="objectiveForm" ng-submit="submitObjectiveData()" class="form-horizontal" style="margin-top:30px;" novalidate>
+    <div class="form-group">
+      <label class="col-xs-3 control-label">Objective Name</label>
+      <div class="col-xs-5">
+          <input type="text" class="form-control" name="name" ng-model="newObjective.name" required />
+          <span class="error" ng-show="objectiveForm.fname.$touched && objectiveForm.fname.$invalid">*Please enter the name of this objective.</span>
+      </div>
+    </div>
+  
+    <div class="form-group">
+        <label class="col-xs-3 control-label">Objective Description</label>
+        <div class="col-xs-5">
+            <input type="text" class="form-control" name="description" ng-model="newObjective.description" required />
+            <span class="error" ng-show="objectiveForm.fname.$touched && objectiveForm.fname.$invalid">*Please enter the description of this objective.</span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-xs-5 col-xs-offset-3">
+            <button type="button" ng-click="backToObjectiveManage()" class="btn btn-primary">Back</button>
+            <button ng-hide="editingObjective" type="submit" class="btn btn-primary">Submit Objective</button>
+            <button ng-show="editingObjective" type="submit" class="btn btn-primary">Submit Changes</button>
+        </div>
+    </div>
+  </form>

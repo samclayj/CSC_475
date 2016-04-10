@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="page-header">
+    <h2>
+     Add New Objective
+    </h2>
+  </div>
+
+  <div ng-show="error" class="alert alert-danger row">
+    <span>{{ error.message }}</span>
+  </div>
+  
+  <div ng-include="'./views/objectives/objectiveForms.html'"></div>
+
+</div>
+

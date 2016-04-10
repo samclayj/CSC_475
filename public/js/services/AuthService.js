@@ -6,7 +6,9 @@
 //$window is used for interfacing with localStorage
 
 angular.module('AuthService', []).factory('auth', ['$http', '$window', function($http, $window) {
-  var auth = {};
+  var auth = {
+    allUsers:[]
+  };
   
   //Save JWT token to local storage.
   auth.saveToken = function(token) {
@@ -41,7 +43,6 @@ angular.module('AuthService', []).factory('auth', ['$http', '$window', function(
     if(auth.isLoggedIn()) {
       var token = auth.getToken();
       var payload = JSON.parse($window.atob(token.split('.')[1]));
-      console.log("Current User: " + payload);
       return payload.username;
     }
   };
@@ -50,10 +51,10 @@ angular.module('AuthService', []).factory('auth', ['$http', '$window', function(
     if(auth.isLoggedIn()) {
       var token = auth.getToken();
       var payload = JSON.parse($window.atob(token.split('.')[1]));
-      console.log("Account Type: " + payload);
       return payload.accountType;
     }
-  }
+  };
+  
   
   // Register, Log in, Log out======================================================
   
@@ -71,12 +72,12 @@ angular.module('AuthService', []).factory('auth', ['$http', '$window', function(
       //Save the newly created token
       auth.saveToken(data.token);
     });
-  }
+  };
   
   //Logout a user. Delete the token from localStorage
   auth.logOut = function() {
     $window.localStorage.removeItem('credit-user-system-token');
-  }
+  };
   
   return auth;
 }]);

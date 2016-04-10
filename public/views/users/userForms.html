@@ -1,15 +1,4 @@
-<div class="container">
-  <div class="page-header">
-    <h2>
-     Register a New User
-    </h2>
-  </div>
-
-  <div ng-show="error" class="alert alert-danger row">
-    <span>{{ error.message }}</span>
-  </div>
-
-  <form name="userForm" ng-submit="register()" method="post" class="form-horizontal" style="margin-top:30px;">
+<form name="userForm" ng-submit="submitUserData()" class="form-horizontal" style="margin-top:30px;" novalidate>
     <div class="form-group">
         <label class="col-xs-3 control-label">First Name</label>
         <div class="col-xs-5">
@@ -37,8 +26,10 @@
     <div class="form-group">
         <label class="col-xs-3 control-label">Password</label>
         <div class="col-xs-5">
-            <input type="password" class="form-control" name="password" ng-model="user.password" required />
-            <span class="error" ng-show="userForm.password.$touched && userForm.password.$invalid">*Please enter your password.</span>
+            <input ng-hide="editingUser" type="password" class="form-control" name="password" ng-model="user.password" placeholder="Enter a new password." required />
+            <input ng-show="editingUser" type="password" class="form-control" name="password" ng-model="user.password" placeholder="Leave blank to save password." />
+
+            <span class="error" ng-show="!editingUser && userForm.password.$touched && userForm.password.$invalid">*Please enter your password.</span>
         </div>
     </div>
 
@@ -56,11 +47,9 @@
 
     <div class="form-group">
         <div class="col-xs-5 col-xs-offset-3">
-            <button type="submit" class="btn btn-primary">Register</button>
+            <button ng-hide="editingUser" type="submit" class="btn btn-primary">Register</button>
+            <button ng-show="editingUser" ng-click="backToUserManage()" class="btn btn-primary">Back</button>
+            <button ng-show="editingUser" type="submit" class="btn btn-primary">Submit Changes</button>
         </div>
     </div>
   </form>
-
-</div>
-
-

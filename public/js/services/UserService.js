@@ -15,6 +15,25 @@ angular.module('UserService', []).factory('userService', ['$http', 'auth', funct
     
   }
   
+  /*Get a user with a specific id.*/
+  o.get = function(id) {
+    return $http.get('/api/users/' + id).then(function(res) {
+      return res.data;  
+    });
+  };
+  
+  o.deleteUser = function(id) {
+    return $http.post('/api/users/delete/' + id).success(function(data) {
+      
+    });
+  };
+  
+  o.updateUser = function(updatedUser) {
+    return $http.post('/api/users/update/' + updatedUser._id, updatedUser).success(function(data) {
+
+    });
+  };
+  
   return o;
   
 }]);
