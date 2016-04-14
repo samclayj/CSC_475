@@ -1,3 +1,36 @@
+<form name="objectiveForm" ng-submit="submitObjectiveData()" class="form-horizontal" novalidate>
+  <div class="mdl-grid">
+    <div class="mdl-cell--12-col">
+      <h5>
+        Objective Information 
+      </h5>
+    </div>
+    <div class="mdl-cell--12-col">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+           <input class="mdl-textfield__input" type="text" id="objectivename" ng-model="newObjective.name" required>
+           <label class="mdl-textfield__label" for="objectivename">Objective Name...</label>
+       </div>
+    </div>
+    <div class="mdl-cell--12-col">
+       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+           <textarea class="mdl-textfield__input" type="text" id="lastname" ng-model="newObjective.description" required></textarea>
+           <label class="mdl-textfield__label" for="firstname">Objective Description...</label>
+       </div>
+    </div>
+    </br>
+    </br>
+    </br>
+    </br>
+    <div class="mdl-cell--12-col"></div>
+      <div class="mdl-cell--6-col">
+        <button type="button" ng-click="backToObjectiveManage()"  class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Back</button>
+        <button ng-hide="editingObjective" type="submit"  class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Submit Objective</button>
+        <button ng-show="editingObjective" type="submit"  class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Submit Changes</button>
+    </div>
+    </div>
+  </form>
+
+<!--
 <form name="objectiveForm" ng-submit="submitObjectiveData()" class="form-horizontal" style="margin-top:30px;" novalidate>
     <div class="form-group">
       <label class="col-xs-3 control-label">Objective Name</label>
@@ -22,4 +55,4 @@
             <button ng-show="editingObjective" type="submit" class="btn btn-primary">Submit Changes</button>
         </div>
     </div>
-  </form>
+  </form>-->

@@ -9,19 +9,16 @@ angular.module('ObjectiveCtrl', []).controller('ObjectiveController', [
     //Authentication from auth controller
     $scope.isLoggedIn = auth.isLoggedIn;
     $scope.state = $state;
- $scope.testModal = false;
     
     $scope.newObjective = {};
-
-
-    $scope.objective = {};
-    $scope.objective = angular.copy(currentObjective);
+    $scope.newObjective = angular.copy(currentObjective);
 
     
     $scope.allObjectives = objectiveService.allObjectives;
     
     $scope.addNewOutcome = false;
     $scope.editOutcomes = false;
+    
     $scope.outcome = {};
     
     //Current user will be null unless a user is being edited.
@@ -44,14 +41,6 @@ angular.module('ObjectiveCtrl', []).controller('ObjectiveController', [
         $scope.addNewOutcome = false;
       } else {
         $scope.addNewOutcome = true;
-      }
-    };
-    
-    $scope.toggleEditOutcomes = function () {
-      if($scope.editOutcomes === true) {
-        $scope.editOutcomes = false;
-      } else {
-        $scope.editOutcomes = true;
       }
     };
     
@@ -85,14 +74,14 @@ angular.module('ObjectiveCtrl', []).controller('ObjectiveController', [
       }
     };
     
-    $scope.deleteOutcome = function (id) {
+    $scope.deleteOutcome = function (id, title) {
       objectiveService.deleteOutcome(id);
-      if($scope.objective.outcomes.length === 1) {
-        $scope.objective.outcomes = {};
+      if($scope.newObjective.outcomes.length === 1) {
+        $scope.newObjective.outcomes = {};
         $scope.toggleEditOutcomes();
       } else {
-        $scope.objective.outcomes = $scope.objective.outcomes.filter(function(obj) {
-          return obj._id === id;
+        $scope.newObjective.outcomes = $scope.newObjective.outcomes.filter(function(obj) {
+          return obj._id != id;
         });
       }
     };
@@ -102,16 +91,12 @@ angular.module('ObjectiveCtrl', []).controller('ObjectiveController', [
     };
     
     $scope.submitOutcomeData = function() {
-      objectiveService.addOutcome($scope.objective._id, $scope.outcome).success(function(outcome) {
-        $scope.objective.outcomes.push(outcome);
+      objectiveService.addOutcome($scope.newObjective._id, $scope.outcome).success(function(outcome) {
+        $scope.newObjective.outcomes.push(outcome);
       });
       $scope.outcome = {};
       $scope.toggleAddOutcome();
     };
-    
-    $scope.testModal = function() {
-      $scope.testModal = true;
-    }
     
 }]);
 

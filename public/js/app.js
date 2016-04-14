@@ -1,4 +1,4 @@
-var creditSystem = angular.module('creditSystem', ['ui.router', 'MainCtrl', 
+var creditSystem = angular.module('creditSystem', ['ui.router', 'ngAnimate', 'MainCtrl', 
                                                    'PostsCtrl', 'PostService', 
                                                    'AuthCtrl', 'AuthService', 'NavCtrl', 
                                                    'UserService', 'UserCtrl',
@@ -138,4 +138,29 @@ creditSystem.config(function($stateProvider, $urlRouterProvider) {
               }]
            }
         });
+});
+
+//Upgrade DOM elements so they are supported by MDL when added.
+//This is required for dynamic web applications
+creditSystem.run(function () {
+    var mdlUpgradeDom = false;
+    setInterval(function() {
+      if (mdlUpgradeDom) {
+        componentHandler.upgradeDom();
+        mdlUpgradeDom = false;
+      }
+    }, 200);
+
+    var observer = new MutationObserver(function () {
+      mdlUpgradeDom = true;
+    });
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+    /* support <= IE 10
+    angular.element(document).bind('DOMNodeInserted', function(e) {
+        mdlUpgradeDom = true;
+    });
+    */
 });

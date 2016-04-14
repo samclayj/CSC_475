@@ -1,16 +1,11 @@
-<div class="container">
-  <div class="page-header">
-    <h2>
-     Register a New User
-    </h2>
+<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp register-form-card">
+  <div class="mdl-card mdl-cell mdl-cell--12-col">
+    <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
+				<h1 class="mdl-card__title-text">Register Now</h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+      <div ng-include="'./views/users/userForms.html'"></div>
+    </div>
   </div>
-
-  <div ng-show="error" class="alert alert-danger row">
-    <span>{{ error.message }}</span>
-  </div>
-  
-  <div ng-include="'./views/users/userForms.html'"></div>
-
-</div>
-
+</section>
 

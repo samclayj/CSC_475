@@ -1,3 +1,56 @@
+<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+  <header class="section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--teal-100 mdl-color-text--white">
+    <i class="material-icons">play_circle_filled</i>
+  </header>
+  <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
+    <div class="mdl-card__supporting-text">
+      <h4>Features</h4>
+      Dolore ex deserunt aute fugiat aute nulla ea sunt aliqua nisi cupidatat eu. Nostrud in laboris labore nisi amet do dolor eu fugiat consectetur elit cillum esse.
+    </div>
+    <div class="mdl-card__actions">
+      <a href="#" class="mdl-button">Read our features</a>
+    </div>
+  </div>
+</section>
+
+<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+  <div class="mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
+    <div class="mdl-card__supporting-text">
+        <h4>Manage Objectives</h4>      
+        <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp custom-table">
+        <thead>
+          <tr>
+            <th class="mdl-data-table__cell--non-numeric">Name</th>
+            <th class="mdl-data-table__cell--non-numeric">Description</th>
+            <th class="mdl-data-table__cell--non-numeric">Outcomes</th>
+            <th class="mdl-data-table__cell--non-numeric">Edit</th>
+            <th class="mdl-data-table__cell--non-numeric">Delete</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr ng-repeat="objective in allObjectives" data-model="allObjectives" class="mdl-data-table__cell--non-numeric">
+            <td>{{ objective.name }}</td>
+            <td>{{ objective.description }}</td>
+            <td><button ng-click="manageObjectiveOutcomes(objective._id)" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Manage</button></td>
+            <td><button ng-click="editObjective(objective._id)" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"><i class="material-icons">border_color</i></button></td>
+            <td><button ng-click="deleteObjective(objective._id)" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"><i class="material-icons">delete_forever</i></button></td>
+          </tr>
+        </tbody>
+      </table>    
+    </div>
+    
+    <div class="mdl-card__actions" style="padding:10px;">
+      <a href="#" class="mdl-button">Read our features</a>
+      <!-- Colored FAB button with ripple -->
+      <button ng-click="addObjective()" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" style="float:right; margin-right:15px;">
+        <i class="material-icons">add</i>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!--
 <div class="container">
   <div class="row">
     <div class="col-md-12">
@@ -34,6 +87,6 @@
     </tbody>
   </table>
 </div>
-
+-->
 
 

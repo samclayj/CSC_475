@@ -10,14 +10,14 @@ function($scope, $rootScope, $state, auth){
   
   //Links for basic access (view only).
   var basicAccessLinks = [
-    {sectionDescription: 'View Accreditation Material'},
+    {sectionDescription: 'Accreditation Material'},
     {description: 'Courses', link:'/#/home'},
     {description: 'Objectives', link:'/#/home'},
     {description: 'Artifacts', link:'/#/home'},
   ];
   
   var facultyAccessLinks = [
-    {sectionDescription: 'Meet requirements'},
+    {sectionDescription: 'Meet Requirements'},
     {description: 'Your Courses', link:'/#/home'},
     {description: 'Your Objectives', link:'/#/home'},
     {description: 'Create Artifacts', link:'/#/home'},

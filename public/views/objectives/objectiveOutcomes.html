@@ -1,101 +1,131 @@
-  
-<div class="container">
-  
-  <div ng-show="error" class="alert alert-danger row">
-    <span>{{ error.message }}</span>
-  </div>
-  
-  <div class="smallHeaderSection">
-    <div class="row">
-      <div class="col-md-10 col-md-offset-1">
-        <h1>
-          {{ objective.name }}
-        </h1>
-      </div>
+<button id="back-button" class="mdl-layout-icon mdl-button mdl-js-button mdl-button--icon mdl-color--primary mdl-color-text--white" onclick="history.go(-1);">
+  <i class="material-icons">arrow_back</i>
+</button>
+<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+  <div class="mdl-card mdl-cell mdl-cell--12-col mdl-color--primary-dark">
+    <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col">
+      <h2>{{ newObjective.name }}</h2>
+      {{ newObjective.description }}   
+      <button ng-click="toggleAddOutcome()" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" style="margin-right:15px; float:right;">
+        <i class="material-icons">add</i>
+      </button>
     </div>
-    <div class="row">
-      <div class="col-md-10 col-md-offset-1">
-        <h4>
-          {{ objective.description }}
-        </h4>
-      </div>
-    </div> 
   </div>
-  
-  <div class="outcomeDisplaySection">
-    
-    <div ng-repeat="outcomeData in objective.outcomes">
-     <div class="col-md-8 col-md-offset-2">
-         <div class="outcomeHeader">
-          <div class="row">
-           <div class="col-md-12">
-             <h3 style="display:inline-block;">{{outcomeData.name}} - {{outcomeData.term}}</h3>
-             <button ng-show="editOutcomes" ng-click="addObjective()" class="btn btn-primary" style="display:inline-block; float:right; margin-top:15px; margin-right:10px;"><i class="fa fa-plus-square fa-lg"></i></button>
-             <button ng-show="editOutcomes" ng-click="deleteOutcome(outcomeData._id)" class="btn btn-danger" style="display:inline-block; float:right; margin-top:15px; margin-right:5px;"><i class="fa fa-trash fa-lg"></i></button>
-           </div>
-          </div>
-       </div>
-       <div class="outcomeBody">
-           <h4>
-             {{outcomeData.description}}
-           </h4>
-          <h4>
-             {{outcomeData.term}}
-           </h4>
-       </div> 
-      </div>
-    </div>
-    
-    <div ng-show="addNewOutcome">
-      <div class="col-md-12 addOutcomeFormSection">
-        <div class="col-md-10 col-md-offset-1">
-          <form name="outcomeForm" ng-submit="submitOutcomeData()" class="form-horizontal" style="margin-top:30px;" novalidate>
-            <div class="form-group">
-              <label class="col-xs-3 control-label">Outcome Name</label>
-              <div class="col-xs-9">
-                  <input type="text" class="form-control" name="name" ng-model="outcome.name" required />
-                  <span class="error" ng-show="outcomeForm.fname.$touched && outcomeForm.fname.$invalid">*Please enter the name of this objective.</span>
-              </div>
-            </div>
+</section>
 
-            <div class="form-group">
-                <label class="col-xs-3 control-label">Outcome Description</label>
-                <div class="col-xs-9">
-                  <textarea class="form-control" name="description" ng-model="outcome.description"></textarea>
-                    <span class="error" ng-show="outcomeForm.fname.$touched && outcomeForm.fname.$invalid">*Please enter the description of this objective.</span>
-                </div>
-            </div>
+<div ng-show="addNewOutcome" class="modal">
+  <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp register-form-card">
+    <div class="mdl-card mdl-cell mdl-cell--12-col">
+      <div class="mdl-card__supporting-text">
+        <h4>Create Outcome</h4>
+        <form name="outcomeForm" ng-submit="submitOutcomeData()" class="form-horizontal" novalidate>
+          <div class="mdl-grid">
 
-            <div class="form-group">
-              <label class="col-xs-3 control-label">Outcome Term</label>
-              <div class="col-xs-9">
-                  <input type="text" class="form-control" name="name" ng-model="outcome.term" required />
-                  <span class="error" ng-show="outcomeForm.fname.$touched && outcomeForm.fname.$invalid">*Please enter the name of this objective.</span>
-              </div>
+            <div class="mdl-cell--12-col">
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                   <input class="mdl-textfield__input" type="text" id="outcomename" ng-model="outcome.name" required>
+                   <label class="mdl-textfield__label" for="outcomename">Outcome Name...</label>
+               </div>
             </div>
-
-            <div class="form-group">
-                <div class="col-xs-9 col-xs-offset-3">
-                    <button type="button" ng-click="toggleAddOutcome()" class="btn btn-primary">Cancel</button>
-                    <button style="float:right;" type="submit" class="btn btn-success">Submit Outcome</button>
-                </div>
+            <div class="mdl-cell--12-col">
+               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                   <textarea class="mdl-textfield__input" type="text" id="outcomedesc" ng-model="outcome.description" required></textarea>
+                   <label class="mdl-textfield__label" for="outcomedesc">Outcome Description...</label>
+               </div>
+            </div>
+            <div class="mdl-cell--12-col">
+               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                   <textarea class="mdl-textfield__input" type="text" id="outcometerm" ng-model="outcome.term" required></textarea>
+                   <label class="mdl-textfield__label" for="outcometerm">Outcome Term...</label>
+               </div>
+            </div>
+            </br>
+            </br>
+            </br>
+            </br>
+            <div class="mdl-cell--12-col"></div>
+              <div class="mdl-cell--6-col">
+                  <button type="button" ng-click="toggleAddOutcome()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Cancel</button>
+                  <button style="float:right;" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Submit Outcome</button>
+            </div>
             </div>
           </form>
-        </div>
-     </div>
-    </div>
-    
-    <div class="row">
-      <div class="col-xs-8 col-xs-offset-2">
-        <div ng-hide="addNewOutcome || editOutcomes" style="float:right;" class="btn-group outcomeButtonGroup">
-          <button type="button" ng-click="backToObjectiveManage()" class="btn btn-primary">Back</button>
-          <button type="button" ng-click="toggleEditOutcomes()" class="btn btn-primary">Edit Outcomes</button>
-          <button type="button" ng-click="toggleAddOutcome()" class="btn btn-success">Add Outcome</button>
-        </div>
-        <div ng-show="!addNewOutcome && editOutcomes" style="float:right;" class="btn-group outcomeButtonGroup">
-          <button type="button" ng-click="toggleEditOutcomes()" class="btn btn-primary">Stop Editing</button>
-        </div>
       </div>
     </div>
-  </div>
+  </section>
 </div>
+
+<section ng-repeat="outcomeData in newObjective.outcomes" class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+  <div class="mdl-card mdl-cell mdl-cell--12-col">
+    <div class="mdl-card__supporting-text">
+      <h4>
+        {{outcomeData.name}} - {{outcomeData.term}}
+      </h4>
+      
+      <h5>
+        {{outcomeData.description}}
+      </h5>
+      
+      <!--Nested Cards-->
+      <section class="section--center mdl-grid">
+        <div class="mdl-card mdl-cell mdl-cell--6-col mdl-shadow--2dp">
+          <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
+            <h2 class="mdl-card__title-text">Assessment Method UI Test 1</h2>
+            <div class="mdl-layout-spacer"></div>
+             <!-- Right aligned menu below button -->
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="{{outcomeData.name}}t1">
+              <i class="material-icons">more_vert</i>
+            </button>
+            <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="{{outcomeData.name}}t1">
+              <li ng-click="" class="mdl-menu__item">Delete Outcome</li>
+              <li class="mdl-menu__item">Edit Outcome</li>
+              <li class="mdl-menu__item">Add Assessment Method</li>
+            </ul>
+          </div>
+          <div class="mdl-card__supporting-text"></div>
+          <div class="mdl-card__actions">
+            <a href="#" class="mdl-button">Handle this test card</a>
+          </div>
+        </div>
+        
+        <div class="mdl-card mdl-cell mdl-cell--6-col mdl-shadow--2dp">
+          <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
+            <h2 class="mdl-card__title-text">Assessment Method UI Test 2</h2>
+            <div class="mdl-layout-spacer"></div>
+             <!-- Right aligned menu below button -->
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="{{outcomeData.name}}t2">
+              <i class="material-icons">more_vert</i>
+            </button>
+            <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="{{outcomeData.name}}t2">
+              <li ng-click="" class="mdl-menu__item">Delete Outcome</li>
+              <li class="mdl-menu__item">Edit Outcome</li>
+              <li class="mdl-menu__item">Add Assessment Method</li>
+            </ul>
+          </div>
+          <div class="mdl-card__supporting-text"></div>
+          <div class="mdl-card__actions">
+            <a href="#" class="mdl-button">Handle this test card</a>
+          </div>
+        </div>
+        
+      </section>
+      <!--End Nested Cards-->
+      
+    </div>
+    <div class="mdl-card__actions">
+      <a href="#" class="mdl-button">Read our features</a>
+    </div>
+  </div>
+  <!-- Right aligned menu below button -->
+  <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="{{outcomeData._id}}">
+    <i class="material-icons">more_vert</i>
+  </button>
+  <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="{{outcomeData._id}}">
+    <li ng-click="deleteOutcome(outcomeData._id, outcomeData.name)" class="mdl-menu__item">Delete Outcome</li>
+    <li class="mdl-menu__item">Edit Outcome</li>
+    <li class="mdl-menu__item">Add Assessment Method</li>
+  </ul>
+</section>
+
+<!--This is here because for some reason it makes the buttons on the cards work-->
+<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp"></section>

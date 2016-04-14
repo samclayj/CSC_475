@@ -1,17 +1,8 @@
-<div class="container">
-  <div class="page-header">
-    <h2>
-     Edit User
-    </h2>
+<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp register-form-card">
+  <div class="mdl-card mdl-cell mdl-cell--12-col">
+    <div class="mdl-card__supporting-text">
+      <h4>Edit User</h4>
+      <div ng-include="'./views/users/userForms.html'"></div>
+    </div>
   </div>
-
-  <div ng-show="error" class="alert alert-danger row">
-    <span>{{ error.message }}</span>
-  </div>
-  
-  <div ng-include="'./views/users/userForms.html'"></div>
-
-</div>
-
-
-
+</section>
