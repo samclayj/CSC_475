@@ -19,21 +19,20 @@
       <div class="mdl-card__supporting-text">
         <h4>Create Outcome</h4>
         <form name="outcomeForm" ng-submit="submitOutcomeData()" class="form-horizontal" novalidate>
-          <div class="mdl-grid">
-
-            <div class="mdl-cell--12-col">
+          <div class="mdl-grid" style="text-align:center">
+            <div class="mdl-cell mdl-cell--12-col">
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                    <input class="mdl-textfield__input" type="text" id="outcomename" ng-model="outcome.name" required>
                    <label class="mdl-textfield__label" for="outcomename">Outcome Name...</label>
                </div>
             </div>
-            <div class="mdl-cell--12-col">
+            <div class="mdl-cell  mdl-cell--12-col">
                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                    <textarea class="mdl-textfield__input" type="text" id="outcomedesc" ng-model="outcome.description" required></textarea>
                    <label class="mdl-textfield__label" for="outcomedesc">Outcome Description...</label>
                </div>
             </div>
-            <div class="mdl-cell--12-col">
+            <div class="mdl-cell mdl-cell--12-col">
                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                    <textarea class="mdl-textfield__input" type="text" id="outcometerm" ng-model="outcome.term" required></textarea>
                    <label class="mdl-textfield__label" for="outcometerm">Outcome Term...</label>
@@ -43,10 +42,9 @@
             </br>
             </br>
             </br>
-            <div class="mdl-cell--12-col"></div>
-              <div class="mdl-cell--6-col">
-                  <button type="button" ng-click="toggleAddOutcome()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Cancel</button>
-                  <button style="float:right;" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Submit Outcome</button>
+            <div class="mdl-cell mdl-cell--12-col">
+                <button style="float:left;" type="button" ng-click="toggleAddOutcome()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Cancel</button>
+                <button style="float:right;" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Submit Outcome</button>
             </div>
             </div>
           </form>
@@ -54,6 +52,179 @@
     </div>
   </section>
 </div>
+
+<div ng-show="addAssessmentMethod" class="modal">
+  <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp register-form-card">
+    <!--Page 1 Card-->
+    <div class="mdl-card mdl-cell mdl-cell--12-col">
+      <div class="mdl-card__supporting-text">
+        <h4>Add Assessment Method</h4>
+        <form name="outcomeForm" ng-submit="submitOutcomeData()" class="form-horizontal" novalidate>
+          <!--Content 1-->
+          <div class="mdl-grid" ng-hide="assessmentFormPage2">
+           <div class="mdl-cell mdl-cell--12-col">
+              <ul class="mdl-list">
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content">
+                    <i class="material-icons  mdl-list__item-avatar">insert_chart</i>
+                    Rubric
+                  </span>
+                    <span class="mdl-list__item-secondary-action">
+                      <label class="mdl-radio-custom mdl-radio mdl-js-radio mdl-js-ripple-effect" for="list-option-1">
+                        <input type="radio" id="list-option-1" class="mdl-radio__button" name="options" value="1" checked />
+                      </label>
+                  </span>
+                </li>
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content">
+                    <i class="material-icons  mdl-list__item-avatar">forum</i>
+                    Survey
+                  </span>
+                    <span class="mdl-list__item-secondary-action">
+                      <label class="mdl-radio-custom mdl-radio mdl-js-radio mdl-js-ripple-effect" for="list-option-1">
+                        <input type="radio" id="list-option-1" class="mdl-radio__button" name="options" value="1" checked />
+                      </label>
+                  </span>
+                </li>
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content">
+                    <i class="material-icons  mdl-list__item-avatar">school</i>
+                    Focus Group
+                  </span>
+                    <span class="mdl-list__item-secondary-action">
+                      <label class="mdl-radio-custom mdl-radio mdl-js-radio mdl-js-ripple-effect" for="list-option-1">
+                        <input type="radio" id="list-option-1" class="mdl-radio__button" name="options" value="1" checked />
+                      </label>
+                  </span>
+                </li>
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content">
+                    <i class="material-icons  mdl-list__item-avatar">description</i>
+                    Embedded Questions
+                  </span>
+                    <span class="mdl-list__item-secondary-action">
+                      <label class="mdl-radio-custom mdl-radio mdl-js-radio mdl-js-ripple-effect" for="list-option-1">
+                        <input type="radio" id="list-option-1" class="mdl-radio__button" name="options" value="1" checked />
+                      </label>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!--End Content 1-->
+          
+          <!--Content 2-->
+          <div class="mdl-grid" ng-show="assessmentFormPage2">
+            <div class="mdl-cell mdl-cell--12-col" style="text-align:center;">
+               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                   <textarea class="mdl-textfield__input" type="text" id="outcomedesc" ng-model="outcome.description" required></textarea>
+                   <label class="mdl-textfield__label" for="outcomedesc">Assessment Description...</label>
+               </div>
+            </div>
+            <div class="mdl-cell mdl-cell--12-col" style="text-align:center;">
+               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                   <textarea class="mdl-textfield__input" type="text" id="outcometerm" ng-model="outcome.term" required></textarea>
+                   <label class="mdl-textfield__label" for="outcometerm">Assessment Term...</label>
+               </div>
+            </div>
+            </br>
+            </br>
+            </br>
+            </br>
+          </div>
+           <!--End Content 2-->
+            <div class="mdl-cell mdl-cell--12-col">
+                <button type="button" ng-click="toggleAddAssessment()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Cancel</button>
+                <button ng-show="assessmentFormPage2" style="float:right;" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Submit</button>
+                <button ng-click="goToAssessmentFormPage1()" ng-show="assessmentFormPage2" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Back</button>
+                <button ng-click="goToAssessmentFormPage2()" ng-hide="assessmentFormPage2" style="float:right;" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Next</button>
+            </div>
+        </form>
+    </div>
+  </section>
+</div>
+
+<div ng-show="viewArtifacts" class="modal">
+  <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp register-form-card">
+    <div class="mdl-card mdl-cell mdl-cell--12-col">
+      <div class="mdl-card__supporting-text">
+        <h4>Assessment Artifacts</h4>
+        
+        <div ng-hide="addArtifact">
+          <ul class="demo-list-two mdl-list">
+            <li class="mdl-list__item mdl-list__item--two-line">
+              <span class="mdl-list__item-primary-content">
+                <i class="material-icons mdl-list__item-avatar">description</i>
+                <span>Grades.pdf</span>
+                <span class="mdl-list__item-sub-title">Selection of class grades.</span>
+              </span>
+              <span class="mdl-list__item-secondary-content">
+                <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">get_app</i></a>
+              </span>
+            </li>
+            <li class="mdl-list__item mdl-list__item--two-line">
+              <span class="mdl-list__item-primary-content">
+                <i class="material-icons mdl-list__item-avatar">description</i>
+                <span>ExampleTest.pdf</span>
+                <span class="mdl-list__item-sub-title">Example of a class examination.</span>
+              </span>
+              <span class="mdl-list__item-secondary-content">
+                <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">get_app</i></a>
+              </span>
+            </li>
+            <li class="mdl-list__item mdl-list__item--two-line">
+              <span class="mdl-list__item-primary-content">
+                <i class="material-icons mdl-list__item-avatar">description</i>
+                <span>Rubric.xlsx</span>
+                <span class="mdl-list__item-sub-title">Rubric used for this course.</span>
+              </span>
+              <span class="mdl-list__item-secondary-content">
+                <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">get_app</i></a>
+              </span>
+            </li>
+          </ul>
+        </div>
+
+      <div ng-show="addArtifact" class="mdl-cell mdl-cell--12-col">
+        <div class="mdl-cell mdl-cell--12-col drop-box" ngf-drop ngf-select ng-model="files" 
+            ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
+            accept="image/*,application/pdf" 
+            ngf-pattern="'image/*,application/pdf'"><p><b>Drag and Drop File or Click to Upload</b></p></div>
+        <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
+        <div class="mdl-cell mdl-cell--12-col" style="text-align:center;">
+           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+               <textarea class="mdl-textfield__input" type="text" id="outcomedesc" ng-model="outcome.description" required></textarea>
+               <label class="mdl-textfield__label" for="outcomedesc">Artifact Description...</label>
+           </div>
+        </div>
+        <div class="mdl-cell mdl-cell--12-col" style="text-align:center;">
+           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+               <textarea class="mdl-textfield__input" type="text" id="outcomedesc" ng-model="outcome.description" required></textarea>
+               <label class="mdl-textfield__label" for="outcomedesc">Artifact Term...</label>
+           </div>
+        </div>
+      </div>
+    </div>
+      <div class="mdl-card__actions">
+          <a ng-hide="addArtifact" ng-click="toggleAddArtifact()" class="mdl-button" style="float:right;">Add New Artifact</a>
+          <a ng-hide="addArtifact" ng-click="toggleViewArtifacts()" class="mdl-button">Back</a>
+          <a ng-show="addArtifact" ng-click="toggleAddArtifact()" class="mdl-button">Cancel</a>
+          <a ng-show="addArtifact" ng-click="toggleAddArtifact()" class="mdl-button" style="float:right;">Submit Artifact</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<section ng-hide="newObjective.outcomes.length" class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+    <div class="mdl-card mdl-cell mdl-cell--12-col">
+      <div class="mdl-card__supporting-text">
+        <h4>No Outcomes Exist for this Objective.</h4>
+      </div>
+      <div class="mdl-card__actions">
+          <a ng-click="toggleAddOutcome()" class="mdl-button">Create New Outcome</a>
+      </div>
+    </div>
+</section>
 
 <section ng-repeat="outcomeData in newObjective.outcomes" class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
   <div class="mdl-card mdl-cell mdl-cell--12-col">
@@ -77,14 +248,35 @@
               <i class="material-icons">more_vert</i>
             </button>
             <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="{{outcomeData.name}}t1">
-              <li ng-click="" class="mdl-menu__item">Delete Outcome</li>
-              <li class="mdl-menu__item">Edit Outcome</li>
-              <li class="mdl-menu__item">Add Assessment Method</li>
+              <li class="mdl-menu__item">Edit Assessment</li>
+              <li ng-click="" class="mdl-menu__item">Add Artifact</li>
+              <li class="mdl-menu__item">Update Results</li>
+              <li class="mdl-menu__item">Update Follow Up</li>
+              <li ng-click="" class="mdl-menu__item">Delete Assessment</li>
             </ul>
           </div>
-          <div class="mdl-card__supporting-text"></div>
+          <div class="mdl-card__supporting-text">
+            
+            <ul class="mdl-list">
+              <li class="mdl-list__item mdl-list__item--three-line">
+                <span class="mdl-list__item-primary-content">
+                  <i class="material-icons mdl-list__item-avatar">forum</i>
+                  <span>Survey</span>
+                  <span class="mdl-list__item-text-body">
+                    Survey of students and faculty to determine effectiveness of objective outcomes. Placeholder blah blah.
+                  </span>
+                </span>
+              </li>
+            </ul>
+            <h5>Results</h5>
+            The results of this assessment were conclusive. The scores were approximately 1000% higher than the usually were. This means that our assessment methods worked extremely well. Go team.
+            <h5>Action</h5>
+            As an action, just keep doing what we are doing and being awesome. At this rate if we keep this up everything will go according to plan and then some. Go Team.
+            <h5>Follow Up</h5>
+            As an action, just keep doing what we are doing and being awesome. At this rate if we keep this up everything will go according to plan and then some. Go Team.
+          </div>
           <div class="mdl-card__actions">
-            <a href="#" class="mdl-button">Handle this test card</a>
+            <a ng-click="toggleViewArtifacts()" class="mdl-button">Assessment Artifacts</a>
           </div>
         </div>
         
@@ -102,7 +294,20 @@
               <li class="mdl-menu__item">Add Assessment Method</li>
             </ul>
           </div>
-          <div class="mdl-card__supporting-text"></div>
+          <div class="mdl-card__supporting-text">
+             <ul class="mdl-list">
+                <li class="mdl-list__item mdl-list__item--three-line">
+                  <span class="mdl-list__item-primary-content">
+                    <i class="material-icons mdl-list__item-avatar">description</i>
+                    <span>Embedded Questions</span>
+                    <span class="mdl-list__item-text-body">
+                      Embedded questions to test objective outcomes.
+                    </span>
+                  </span>
+                </li>
+              </ul>
+              <h5>Results</h5>
+          </div>
           <div class="mdl-card__actions">
             <a href="#" class="mdl-button">Handle this test card</a>
           </div>
@@ -123,7 +328,7 @@
   <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="{{outcomeData._id}}">
     <li ng-click="deleteOutcome(outcomeData._id, outcomeData.name)" class="mdl-menu__item">Delete Outcome</li>
     <li class="mdl-menu__item">Edit Outcome</li>
-    <li class="mdl-menu__item">Add Assessment Method</li>
+    <li ng-click="toggleAddAssessment()" class="mdl-menu__item">Add Assessment Method</li>
   </ul>
 </section>
 

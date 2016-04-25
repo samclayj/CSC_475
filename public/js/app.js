@@ -1,4 +1,5 @@
-var creditSystem = angular.module('creditSystem', ['ui.router', 'ngAnimate', 'MainCtrl', 
+var creditSystem = angular.module('creditSystem', ['ui.router', 'ngAnimate', 
+                                                   'ngFileUpload', 'MainCtrl', 
                                                    'PostsCtrl', 'PostService', 
                                                    'AuthCtrl', 'AuthService', 'NavCtrl', 
                                                    'UserService', 'UserCtrl',
