@@ -148,8 +148,7 @@
   <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp register-form-card">
     <div class="mdl-card mdl-cell mdl-cell--12-col">
       <div class="mdl-card__supporting-text">
-        <h4>Assessment Artifacts</h4>
-        
+      <h4>Assessment Artifacts</h4>
         <div ng-hide="addArtifact">
           <ul class="demo-list-two mdl-list">
             <li class="mdl-list__item mdl-list__item--two-line">
@@ -184,33 +183,34 @@
             </li>
           </ul>
         </div>
-
+        
+     <form name="artifactForm" ng-submit="submitArtifact()" class="form-horizontal" novalidate>
       <div ng-show="addArtifact" class="mdl-cell mdl-cell--12-col">
-        <div class="mdl-cell mdl-cell--12-col drop-box" ngf-drop ngf-select ng-model="files" 
-            ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
-            accept="image/*,application/pdf" 
-            ngf-pattern="'image/*,application/pdf'"><p><b>Drag and Drop File or Click to Upload</b></p></div>
-        <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
-        <div class="mdl-cell mdl-cell--12-col" style="text-align:center;">
-           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-               <textarea class="mdl-textfield__input" type="text" id="outcomedesc" ng-model="outcome.description" required></textarea>
-               <label class="mdl-textfield__label" for="outcomedesc">Artifact Description...</label>
-           </div>
+          <div ng-model="file" name="file" class="mdl-cell mdl-cell--12-col drop-box" ngf-drop ngf-select ng-model="files" 
+              ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-allow-dir="false"
+              accept="image/*,application/pdf" 
+              ngf-pattern="'image/*,application/pdf'"><p><b>Drag and Drop File or Click to Upload</b></p></div>
+          <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
+          <div class="mdl-cell mdl-cell--12-col" style="text-align:center;">
+             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                 <textarea class="mdl-textfield__input" type="text" id="outcomedesc" ng-model="outcome.description" required></textarea>
+                 <label class="mdl-textfield__label" for="outcomedesc">Artifact Description...</label>
+             </div>
+          </div>
+          <div class="mdl-cell mdl-cell--12-col" style="text-align:center;">
+             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                 <textarea class="mdl-textfield__input" type="text" id="outcomedesc" ng-model="outcome.description" required></textarea>
+                 <label class="mdl-textfield__label" for="outcomedesc">Artifact Term...</label>
+             </div>
+          </div>
         </div>
-        <div class="mdl-cell mdl-cell--12-col" style="text-align:center;">
-           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-               <textarea class="mdl-textfield__input" type="text" id="outcomedesc" ng-model="outcome.description" required></textarea>
-               <label class="mdl-textfield__label" for="outcomedesc">Artifact Term...</label>
-           </div>
+        <div class="mdl-card__actions">
+            <a ng-hide="addArtifact" ng-click="toggleAddArtifact()" class="mdl-button" style="float:right;">Add New Artifact</a>
+            <a ng-hide="addArtifact" ng-click="toggleViewArtifacts()" class="mdl-button">Back</a>
+            <a ng-show="addArtifact" ng-click="toggleAddArtifact()" class="mdl-button">Cancel</a>
+            <a ng-show="addArtifact" ng-click="submitArtifact()" class="mdl-button" style="float:right;">Submit Artifact</a>
         </div>
-      </div>
-    </div>
-      <div class="mdl-card__actions">
-          <a ng-hide="addArtifact" ng-click="toggleAddArtifact()" class="mdl-button" style="float:right;">Add New Artifact</a>
-          <a ng-hide="addArtifact" ng-click="toggleViewArtifacts()" class="mdl-button">Back</a>
-          <a ng-show="addArtifact" ng-click="toggleAddArtifact()" class="mdl-button">Cancel</a>
-          <a ng-show="addArtifact" ng-click="toggleAddArtifact()" class="mdl-button" style="float:right;">Submit Artifact</a>
-      </div>
+      </form>
     </div>
   </section>
 </div>

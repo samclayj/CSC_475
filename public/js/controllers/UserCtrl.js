@@ -5,7 +5,6 @@ angular.module('UserCtrl', []).controller('UserController', [
   '$state',
   'userService',
   'currentUser',
-  'ngDialog',
   function($scope, auth, $state, userService, currentUser, ngDialog) {
     //Authentication from auth controller
     $scope.isLoggedIn = auth.isLoggedIn;
